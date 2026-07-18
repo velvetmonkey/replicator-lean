@@ -1,5 +1,6 @@
 # replicator-lean
 
+[![thread](https://img.shields.io/badge/%F0%9F%A7%B5-how%20it%20works-1DA1F2)](https://x.com/thevelvetmonke)
 [![Lean 4](https://img.shields.io/badge/Lean-4.28.0-blue)](https://lean-lang.org/)
 [![Mathlib](https://img.shields.io/badge/Mathlib-v4.28.0-purple)](https://github.com/leanprover-community/mathlib4)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -12,7 +13,15 @@ Lean 4 formal proofs for algebraic properties of replicator dynamics on the stan
 
 **Zero sorry statements.** Standard axioms only (`propext`, `Classical.choice`, `Quot.sound`).
 
-## Why it matters
+## What this is, and why it matters
+
+This library formalizes algebraic facts about replicator dynamics on the finite standard simplex. Its headline theorem, `replicator_convergence`, proves that a simplex state is a fixed point satisfying the repo's global fitness inequality exactly when it satisfies the defined Nash-equilibrium predicate.
+
+The useful surrounding proof spine is the fitness-variance calculation. The dot product of fitness with the replicator vector field equals a nonnegative weighted variance, and that variance vanishes exactly at fixed points. The library also proves that Nash equilibria in its sense are fixed points and that the vector-field components sum to zero on the simplex.
+
+The headline name should not be read as a trajectory theorem. It contains no flow, time variable, limit, or LaSalle argument, and therefore does not prove that replicator trajectories converge to Nash equilibria. Likewise, the result named `simplex_invariant` establishes conservation of total mass at the vector-field level, not the full positive-invariance theorem for ODE solutions.
+
+## Background and motivation
 
 Replicator dynamics is a central model in evolutionary game theory. A population state `x` lies in the standard simplex when all strategy weights are nonnegative and sum to one. Given a fitness vector `f`, the replicator vector field is:
 
